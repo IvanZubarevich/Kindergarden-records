@@ -64,39 +64,43 @@
 Графический интерфейс пользователя представлен в виде mock-up иллюстраций.
 
 
-Страница авторизации
+Стартовая страница
 
-![autorization](https://github.com/belarus01/Messenger/blob/master/docs/Requirements/mockups/Login.png)
+![start](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Page1.png)
 
 Страница регистрации
 
-![registration](https://github.com/belarus01/Messenger/blob/master/docs/Requirements/mockups/Registration.png)
+![registration](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Registration.png)
+
+Страница авторизации
+
+![autarization](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Login.png)
+
+Страница администратора
+
+![menu](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Page3.png)
+
+Страница пользователя
+
+![main_page](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Page2.png)
 
 
-Главная страница
-![menu](https://github.com/belarus01/Messenger/blob/master/docs/Requirements/mockups/MainPage.png)
+## 2.3. Характеристики пользователей
 
-Профиль пользователя
-
-![main_page](https://github.com/belarus01/Messenger/blob/master/docs/Requirements/mockups/Profile.png)
-
-
-## []2.3. Характеристики пользователей
-
-### []2.3.1. Классы пользователей
+### 2.3.1. Классы пользователей
 | Класс пользователей |Описание  |
 |--|--|
 |Администратор|Пользователи, которые прошли процедуру регистрации. Имеют доступ к полному функционалу приложения.|
 |Пользователь|Пользователи, которые не прошли процедуру регистрации. Имеют доступ к ограниченному функционалу приложения|
 
-### []2.3.2. Аудитория приложения
+### 2.3.2. Аудитория приложения
 
 Целевой аудиторией проекта являются люди, у которых есть дети.
 
 
 
 
-# []3. Системные требования
+# 3. Системные требования
 
 ## [](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/SRS.md)3.1. Функциональные требования
 
