@@ -68,17 +68,17 @@
 
 ![start](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Page1.png)
 
-Страница регистрации
-
-![registration](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Registration.png)
-
 Страница авторизации
 
 ![autarization](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Login.png)
 
+Страница регистрации
+
+![registration](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Registration.png)
+
 Страница администратора
 
-![menu](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Page3.png)
+![menu](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Admin.png)
 
 Страница пользователя
 
@@ -160,5 +160,5 @@
 
 #### [](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/SRS.md)3.2.1.2 Безопасность
 
-Приложение должно хранить данные пользователя в базе данных под управлением СУБД MySql. Доступ к базе данных должно иметь только это приложение.
+Приложение должно хранить данные пользователя в базе данных. Доступ к базе данных должно иметь только это приложение.
 Приложение предоставляет возможность редактирования информации только администратору.
