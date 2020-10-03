@@ -82,19 +82,12 @@
 
 Страница пользователя
 
-![main_page](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Page2.png)
+![main_page](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Search.png)
 
 Страница добавления и изменения информации
 
 ![add/change](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Add.png)
 
-Страница удаления информации
-
-![delete](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Delete.png)
-
-Страница поиска информации
-
-![search](https://github.com/IvanZubarevich/Kindergarden-records/blob/main/docs/mockups/Search.png)
 
 
 ## 2.3. Характеристики пользователей
