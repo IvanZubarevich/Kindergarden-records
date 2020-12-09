@@ -36,7 +36,7 @@
         alert('Строка поиска пуста!');
     </script>
 </div>
-<form th:action="@{/show}" method="post">
+<form th:action="@{/guest}" method="post">
     <p style="font-family: arial black; text-align:center; font-size: 300%; color: #00bd00">Информация о детских садах</p>
     <table style="margin-top:50px; margin-left:auto; margin-right:auto">
         <tr>
@@ -54,20 +54,20 @@
     </p>
 </form>
 <form>
-        <table>
-            <tr>
-                <td rowspan="2" class="text" style="font-weight: bold">Район</td>
-                <td rowspan="2" class="text">Название учреждения образования</td>
-                <td rowspan="2" class="text">Адрес</td>
-                <td rowspan="2" class="text">Контактный телефон</td>
-                <td colspan="4" class="text">Количество групп</td>
-                <td colspan="4" class="text">Количество свободных мест</td>
-            </tr>
-            <tr>
-                <th class="text">ясли</th><th class="text">младшая группа</th><th class="text">средняя группа</th><th class="text">старшая группа</th>
-                <th class="text">ясли</th><th class="text">младшая группа</th><th class="text">средняя группа</th><th class="text">старшая группа</th>
-            </tr>
-            <th:block th:each="el:${kindergartens}">
+    <table>
+        <tr>
+            <td rowspan="2" class="text" style="font-weight: bold">Район</td>
+            <td rowspan="2" class="text">Название учреждения образования</td>
+            <td rowspan="2" class="text">Адрес</td>
+            <td rowspan="2" class="text">Контактный телефон</td>
+            <td colspan="4" class="text">Количество групп</td>
+            <td colspan="4" class="text">Количество свободных мест</td>
+        </tr>
+        <tr>
+            <th class="text">ясли</th><th class="text">младшая группа</th><th class="text">средняя группа</th><th class="text">старшая группа</th>
+            <th class="text">ясли</th><th class="text">младшая группа</th><th class="text">средняя группа</th><th class="text">старшая группа</th>
+        </tr>
+        <th:block th:each="el:${kindergartens}">
             <tr>
                 <td style="text-align:center" class="text"><div th:text="${el.region}" /></td>
                 <td style="text-align:center" class="text"><div th:text="${el.kinder}" /></td>
@@ -82,8 +82,8 @@
                 <td style="text-align:center" class="text"><div th:text="${el.info.middle}" /></td>
                 <td style="text-align:center" class="text"><div th:text="${el.info.senior}" /></td>
             </tr>
-            </th:block>
-        </table>
+        </th:block>
+    </table>
 </form>
 </body>
 </html>

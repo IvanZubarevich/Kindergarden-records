@@ -28,61 +28,69 @@ public class GuestController {
         }
         kindergartens.sort(Comparator.comparing(Kindergarten::getKinder));
         model.addAttribute("kindergartens", kindergartens);
-        return "show";
+        return "showGuest";
     }
 
     @PostMapping("/guest")
     public String postGuest(String search, String s, Model model)
     {
-        int max_length = search.length();
-        String choice = search.substring(0, max_length-1);
-        Iterable<Kindergarten> kinders = kindergartenRepository.findAll();
-        switch (s) {
-            case "region" -> {
-                ArrayList<Kindergarten> kindergartens = new ArrayList<>();
-                for(Kindergarten kinder : kinders)
-                {
-                    if(choice.equals(kinder.getRegion()))
-                        kindergartens.add(kinder);
-                }
-                if(kindergartens.size()>0) {
-                    kindergartens.sort(Comparator.comparing(Kindergarten::getKinder));
-                    model.addAttribute("kindergartens", kindergartens);
-                }
-                else model.addAttribute("fail_search", "По Вашему запросу ничего не найдено!");
-                break;
+        if(search.equals(",") && s.equals("all"))
+        {
+            Iterable<Kindergarten> kinders = kindergartenRepository.findAll();
+            ArrayList<Kindergarten> kindergartens = new ArrayList<>();
+            for(Kindergarten kinder : kinders)
+            {
+                kindergartens.add(kinder);
             }
-            case "address" -> {
-                ArrayList<Kindergarten> kindergartens = new ArrayList<>();
-                for(Kindergarten kinder : kinders)
-                {
-                    if(choice.equals(kinder.getAddress()))
-                        kindergartens.add(kinder);
+            kindergartens.sort(Comparator.comparing(Kindergarten::getKinder));
+            model.addAttribute("kindergartens", kindergartens);
+        }
+        else {
+            if(search.equals(",")) model.addAttribute("fail_param", "Строка поиска пуста!");
+            else {
+                int max_length = search.length();
+                String choice = search.substring(0, max_length - 1);
+                Iterable<Kindergarten> kinders = kindergartenRepository.findAll();
+                switch (s) {
+                    case "region" -> {
+                        ArrayList<Kindergarten> kindergartens = new ArrayList<>();
+                        for (Kindergarten kinder : kinders) {
+                            if (choice.equals(kinder.getRegion()))
+                                kindergartens.add(kinder);
+                        }
+                        if (kindergartens.size() > 0) {
+                            kindergartens.sort(Comparator.comparing(Kindergarten::getKinder));
+                            model.addAttribute("kindergartens", kindergartens);
+                        } else model.addAttribute("fail_search", "По Вашему запросу ничего не найдено!");
+                        break;
+                    }
+                    case "address" -> {
+                        ArrayList<Kindergarten> kindergartens = new ArrayList<>();
+                        for (Kindergarten kinder : kinders) {
+                            if (choice.equals(kinder.getAddress()))
+                                kindergartens.add(kinder);
+                        }
+                        if (kindergartens.size() > 0) {
+                            kindergartens.sort(Comparator.comparing(Kindergarten::getKinder));
+                            model.addAttribute("kindergartens", kindergartens);
+                        } else model.addAttribute("fail_search", "По Вашему запросу ничего не найдено!");
+                        break;
+                    }
+                    case "name" -> {
+                        ArrayList<Kindergarten> kindergartens = new ArrayList<>();
+                        for (Kindergarten kinder : kinders) {
+                            if (choice.equals(kinder.getKinder()))
+                                kindergartens.add(kinder);
+                        }
+                        if (kindergartens.size() > 0) {
+                            kindergartens.sort(Comparator.comparing(Kindergarten::getKinder));
+                            model.addAttribute("kindergartens", kindergartens);
+                        } else model.addAttribute("fail_search", "По Вашему запросу ничего не найдено!");
+                        break;
+                    }
                 }
-                if(kindergartens.size()>0)
-                {
-                    kindergartens.sort(Comparator.comparing(Kindergarten::getKinder));
-                    model.addAttribute("kindergartens", kindergartens);
-                }
-                else model.addAttribute("fail_search", "По Вашему запросу ничего не найдено!");
-                break;
-            }
-            case "name" -> {
-                ArrayList<Kindergarten> kindergartens = new ArrayList<>();
-                for(Kindergarten kinder : kinders)
-                {
-                    if(choice.equals(kinder.getKinder()))
-                        kindergartens.add(kinder);
-                }
-                if(kindergartens.size()>0)
-                {
-                    kindergartens.sort(Comparator.comparing(Kindergarten::getKinder));
-                    model.addAttribute("kindergartens", kindergartens);
-                }
-                else model.addAttribute("fail_search", "По Вашему запросу ничего не найдено!");
-                break;
             }
         }
-        return "show";
+        return "showGuest";
     }
 }

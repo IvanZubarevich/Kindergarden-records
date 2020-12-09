@@ -31,11 +31,16 @@
         alert('По Вашему запросу ничего не найдено!');
     </script>
 </div>
+<div th:if="${fail_param}">
+    <script>
+        alert('Строка поиска пуста!');
+    </script>
+</div>
 <form th:action="@{/show}" method="post">
     <p style="font-family: arial black; text-align:center; font-size: 300%; color: #00bd00">Информация о детских садах</p>
     <table style="margin-top:50px; margin-left:auto; margin-right:auto">
         <tr>
-            <td><input type="text" name="search" size="50px"  style="font-size: 25px" required></td>
+            <td><input type="text" name="search" size="50px"  style="font-size: 25px"></td>
             <td><button type="submit" name="search" class="button">
                 <img src="https://i.ibb.co/MkkbPQF/magnifier.png" style="width: 25px; height: 25px; border-radius: 20px;" >
             </button></td>
@@ -45,6 +50,7 @@
         <input name="s" type="radio" value="region" required>по району
         <input name="s" type="radio" value="name" required>по названию
         <input name="s" type="radio" value="address" required>по адресу
+        <input name="s" type="radio" value="all" required>все
     </p>
 </form>
 <form>
