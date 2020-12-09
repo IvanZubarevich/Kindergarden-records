@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Регистрация</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style>
+    .button{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 25px;
+    width: 300px;
+    border-radius: 20px;
+    color: #00bd00;
+    }
+    .text{
+    font-weight: bold;
+    font-family: monaco;
+    font-size: 150%;
+    color: #00bd00;
+    margin-left: 25px
+    }
+</style>
+<body bgcolor="#c2fff6">
+<div th:if="${fail_kindergarten}">
+    <script>
+    alert('Детский сад или пользователь с таким логином есть в базе данных!');
+</script>
+</div>
+<div th:if="${fail_email}">
+    <script>
+        alert('Введенная электронная почта уже используется!');
+    </script>
+</div>
+<p style="font-family: arial black; text-align:center; font-size: 300%; color: #00bd00">Регистрация</p>
+<form th:action="@{/admin/registration}" method="post">
+    <table style="margin-top:50px; margin-left:auto; margin-right:auto">
+        <tr>
+            <td width="300px" height="40px" class="text">ФИО руководителя</td>
+            <td><input type="text" name="full_name" size="40px" style="font-size: 18px" pattern="^[А-Яа-яЁё\s]+$" placeholder="Иванов Иван Иванович" required/></td>
+       </tr>
+        <tr>
+            <td width="300px" height="40px" class="text">Название учреждения образования</td>
+            <td><input type="text" name="kindergarten" size="40px" placeholder="Детский сад №1" style="font-size: 18px" required/></td>
+        </tr>
+        <tr>
+            <td width="300px" height="40px" class="text">Логин</td>
+            <td><input type="text" name="username" size="40px" placeholder="Логин"  style="font-size: 18px" required/></td>
+        </tr>
+        <tr>
+            <td width="300px" height="40px" class="text">Пароль</td>
+            <td><input type="password" name="password" size="40px" minlength="8" placeholder="Пароль" style="font-size: 18px" required/></td>
+        </tr>
+        <tr>
+            <td width="300px" height="40px" class="text">Электронная почта</td>
+            <td><input type="email" name="email" size="40px" placeholder="ivanov@gmail.com"  style="font-size: 18px" required/></td>
+        </tr>
+    </table>
+    <div><input type="submit" class="button" style="font-weight: bold; margin-top:10px" value="Зарегистрироваться"/></div>
+</form>
+<img  src = "https://i.ibb.co/KmY8j87/poisk.png" style = "margin-left: 120px;  margin-top: 40px; width: 1150px; height: 300px">
+</body>
+</html>
+

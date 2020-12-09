@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Авторизация </title>
+</head>
+<style>
+    .button{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 21px;
+    width: 200px;
+    border-radius: 20px;
+    color: #00bd00;
+    }
+    .text{
+    font-weight: bold;
+    font-family: monaco;
+    font-size: 150%;
+    color: #00bd00;
+    text-align:center;
+    }
+
+</style>
+<body bgcolor="#c2fff6">
+<div th:if="${param.error}">
+    <script>
+        alert('Неправильный логин и/или пароль.');
+</script>
+</div>
+<div th:if="${message}">
+    <script>
+        alert('Регистрация прошла успешно!');
+    </script>
+</div>
+    <p style="font-family: arial black; text-align:center; font-size: 300%; color: #00bd00">Авторизация</p>
+<form th:action="@{/admin}" method="post">
+    <div><p class="text">Логин <input type="text" name="username" size="35px" placeholder="Логин" style="font-size: 18px; margin-left:35px" required/> </p></div>
+    <div><p class="text">Пароль <input type="password" name="password" size="35px" minlength="8" placeholder="Пароль" style="font-size: 18px; margin-left:20px" required/> </p></div>
+    <div><input type="submit" class="button" style="font-weight: bold" value="Войти"/></div>
+</form>
+<form action="admin/registration" style="margin-top: 15px"><button name="registration" class="button"><b>Регистрация</b></button></form>
+<img  src = "https://ds05.infourok.ru/uploads/ex/00c5/0011db14-e03165d2/hello_html_m54a2c67f.png" style = "margin-left: 125px;  margin-top: 80px; width: 1150px; height: 350px">
+</body>
+</html>
+
+
+

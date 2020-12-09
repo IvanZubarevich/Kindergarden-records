@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Информация</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style>
+    .button{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 25px;
+    width: 300px;
+    border-radius: 20px;
+    color: #00bd00;
+    }
+    .text{
+    font-weight: bold;
+    font-family: monaco;
+    font-size: 150%;
+    color: #00bd00;
+    }
+</style>
+<body bgcolor="#c2fff6">
+<div th:if="${message}">
+    <script>
+        alert('Информация о детском саде отредактирована!');
+    </script>
+</div>
+<div th:if="${fail_input}">
+    <script>
+        alert('Введенное название детского сада не соответствует с зарегистрированным!');
+    </script>
+</div>
+<div th:each="el:${kindergarten}">
+    <div th:each="in:${information}">
+<form th:action="@{/information/edit}" method="post">
+    <p style="font-family: arial black; text-align:center; font-size: 300%; color: #00bd00">Редактирование данных</p>
+    <table style="margin-top:50px; margin-left:auto; margin-right:auto">
+        <tr>
+            <td width="300px" height="40px" class="text">Район</td>
+            <td ><select id="region" name="region" th:value="region" style="width:377px; height: 25px; font-size: 18px" >
+                <option value="Центральный" >Центральный</option>
+                <option value="Советский">Советский</option>
+                <option value="Первомайский">Первомайский</option>
+                <option value="Партизанский">Партизанский</option>
+                <option value="Заводской">Заводской</option>
+                <option value="Ленинский">Ленинский</option>
+                <option value="Октябрьский">Октябрьский</option>
+                <option value="Московский">Московский</option>
+                <option value="Фрунзенский">Фрунзенский</option>
+            </select>
+                <script th:inline="javascript">
+                    const select = document.querySelector('#region').getElementsByTagName('option');
+                    var data = /*[[${el.region}]]*/;
+                    for (let i = 0; i < select.length; i++) {
+                            if (select[i].value === data) select[i].selected = true;}
+                </script>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="300px" height="40px" class="text">Название учреждения образования</td>
+            <td><input type="text" th:value="${el.kinder}" name="kinder" size="40px" placeholder="Детский сад №1" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td width="300px" height="40px"  class="text">Адрес</td>
+            <td><input type="text" th:value="${el.address}" name="address" size="40px" placeholder="ул. Ленина, д.1" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td width="300px" height="40px"  class="text">Контактный телефон</td>
+            <td><input th:value="${el.phone}" type="tel" name="phone" size="40px" pattern="^(\+375)(17|29|33|44|25)(\d{2})(\d{2})(\d{3})$" placeholder="+375ххххххxхх" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td width="300px" height="70px"  class="text">Количество групп</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">ясли</td>
+            <td width="300px"><input type="text" th:value="${in.nursery_group}" name="nursery_group" size="40px"  placeholder="10" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">младшая группа</td>
+            <td><input type="text" th:value="${in.younger_group}" name="younger_group" size="40px"  placeholder="10" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px"  class="text">средняя группа</td>
+            <td><input type="text" th:value="${in.middle_group}" name="middle_group" size="40px"  placeholder="10" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">старшая группа</td>
+            <td><input type="text" th:value="${in.senior_group}" name="senior_group" size="40px"  placeholder="10" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td width="300px" height="100px"  class="text">Количество свободных мест</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px"  class="text">ясли</td>
+            <td><input type="text" th:value="${in.nursery}" name="nursery" size="40px"  placeholder="50" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">младшая группа</td>
+            <td><input type="text" th:value="${in.younger}" name="younger" size="40px" placeholder="50" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">средняя группа</td>
+            <td><input type="text" th:value="${in.middle}" name="middle" size="40px" placeholder="50" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">старшая группа</td>
+            <td><input type="text" th:value="${in.senior}" name="senior" size="40px" placeholder="50" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+    </table>
+    <div><input type="submit" class="button" style="font-weight: bold; margin-top:10px" value="Редактировать"/></div>
+</form>
+    </div>
+</div>
+<img  src = "https://i.ibb.co/85kZkkS/search.png" style = "margin-left: 190px;  margin-top: 40px; width: 1050px; height: 300px">
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Меню</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style>
+    .button{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 35px;
+    width: 350px;
+    border-radius: 20px;
+    color: #4B0082;
+    }
+</style>
+<body bgcolor="#c2fff6">
+<div th:if="${message}">
+    <script>
+        alert('Детский сад удален!');
+    </script>
+</div>
+<div th:if="${fail_message}">
+    <script>
+        alert('Информации о детском саде нет в базе данных!');
+    </script>
+</div>
+<img   src = "https://dou8.lmn.su/images/dobro.png" style = "margin-left: 410px; width: 600px; height: 320px">
+<p style="font-family: arial black; text-align:center; font-size: 300%; color: #00bd00">Выберите действие</p>
+<form action="information/add" style="margin-top: 30px"><button name="add" class="button" style="background-color: #FFA500">Добавить сведения</button></form>
+<form th:action="@{/delete}" method="post" style="margin-top: 15px"><button type="submit" name="delete"  class="button" style="background-color: #FFFF00">Удалить сведения</button></form>
+<form action="information/edit" style="margin-top: 15px"><button name="change" class="button" style="background-color: #00FF7F">Изменить сведения</button></form>
+<form action="show" style="margin-top: 15px"><button name="show" class="button" style="background-color: #00BFFF">Показать сведения</button></form>
+<form th:action="@{/logout}" method="post" style="margin-top: 15px">
+    <input type="submit" class="button" style="background-color: #9370DB" value="Выйти"/>
+</form>
+</body>
+</html>
+

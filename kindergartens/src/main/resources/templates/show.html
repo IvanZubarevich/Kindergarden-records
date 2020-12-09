@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Информация</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style>
+    .text{
+    font-weight: bold;
+    font-family: monaco;
+    font-size: 100%;
+    color: #00bd00;
+    text-align:center;
+    }
+
+    TABLE {
+    border-collapse: collapse;
+    background: #ffffff;
+    border: 4px solid #00bd00;
+   }
+
+   TD, TH {
+    padding: 5px;
+    border: 2px solid green;
+   }
+</style>
+<body bgcolor="#c2fff6">
+<div th:if="${fail_search}">
+    <script>
+        alert('По Вашему запросу ничего не найдено!');
+    </script>
+</div>
+<form th:action="@{/show}" method="post">
+    <p style="font-family: arial black; text-align:center; font-size: 300%; color: #00bd00">Информация о детских садах</p>
+    <table style="margin-top:50px; margin-left:auto; margin-right:auto">
+        <tr>
+            <td><input type="text" name="search" size="50px"  style="font-size: 25px" required></td>
+            <td><button type="submit" name="search" class="button">
+                <img src="https://i.ibb.co/MkkbPQF/magnifier.png" style="width: 25px; height: 25px; border-radius: 20px;" >
+            </button></td>
+        </tr>
+    </table>
+    <p style="text-align:center" class="text">
+        <input name="s" type="radio" value="region" required>по району
+        <input name="s" type="radio" value="name" required>по названию
+        <input name="s" type="radio" value="address" required>по адресу
+    </p>
+</form>
+<form>
+        <table>
+            <tr>
+                <td rowspan="2" class="text" style="font-weight: bold">Район</td>
+                <td rowspan="2" class="text">Название учреждения образования</td>
+                <td rowspan="2" class="text">Адрес</td>
+                <td rowspan="2" class="text">Контактный телефон</td>
+                <td colspan="4" class="text">Количество групп</td>
+                <td colspan="4" class="text">Количество свободных мест</td>
+            </tr>
+            <tr>
+                <th class="text">ясли</th><th class="text">младшая группа</th><th class="text">средняя группа</th><th class="text">старшая группа</th>
+                <th class="text">ясли</th><th class="text">младшая группа</th><th class="text">средняя группа</th><th class="text">старшая группа</th>
+            </tr>
+            <th:block th:each="el:${kindergartens}">
+            <tr>
+                <td style="text-align:center" class="text"><div th:text="${el.region}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.kinder}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.address}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.phone}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.info.nursery_group}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.info.younger_group}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.info.middle_group}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.info.senior_group}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.info.nursery}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.info.younger}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.info.middle}" /></td>
+                <td style="text-align:center" class="text"><div th:text="${el.info.senior}" /></td>
+            </tr>
+            </th:block>
+        </table>
+</form>
+</body>
+</html>

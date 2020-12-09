@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Информация</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style>
+    .button{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 25px;
+    width: 300px;
+    border-radius: 20px;
+    color: #00bd00;
+    }
+    .text{
+    font-weight: bold;
+    font-family: monaco;
+    font-size: 150%;
+    color: #00bd00;
+    }
+</style>
+<body bgcolor="#c2fff6">
+<div th:if="${message}">
+    <script>
+        alert('Детский сад добавлен в систему!');
+    </script>
+</div>
+<div th:if="${fail_input}">
+    <script>
+        alert('Введенное название детского сада не соответствует с зарегистрированным!');
+    </script>
+</div>
+<form th:action="@{/information/add}" method="post">
+    <p style="font-family: arial black; text-align:center; font-size: 300%; color: #00bd00">Добавление данных</p>
+    <table style="margin-top:50px; margin-left:auto; margin-right:auto">
+        <tr>
+            <td width="300px" height="40px" class="text">Район</td>
+            <td ><select id="region" name="region" style="width:377px; height: 25px; font-size: 18px" required>
+                <option>Центральный</option>
+                <option>Советский</option>
+                <option>Первомайский</option>
+                <option>Партизанский</option>
+                <option>Заводской</option>
+                <option>Ленинский</option>
+                <option>Октябрьский</option>
+                <option>Московский</option>
+                <option>Фрунзенский</option>
+            </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="300px" height="40px" class="text">Название учреждения образования</td>
+            <td><input type="text" name="kinder" size="40px" placeholder="Детский сад №1" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td width="300px" height="40px"  class="text">Адрес</td>
+            <td><input type="text" name="address" size="40px" placeholder="ул. Ленина, д.1" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td width="300px" height="40px"  class="text">Контактный телефон</td>
+            <td><input  type="tel" name="phone" size="40px" pattern="^(\+375)(17|29|33|44|25)(\d{2})(\d{2})(\d{3})$" placeholder="+375ххххххxхх" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td width="300px" height="70px"  class="text">Количество групп</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">ясли</td>
+            <td width="300px"><input type="text" name="nursery_group" size="40px"  placeholder="10" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">младшая группа</td>
+            <td><input type="text" name="younger_group" size="40px"  placeholder="10" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px"  class="text">средняя группа</td>
+            <td><input type="text" name="middle_group" size="40px"  placeholder="10" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">старшая группа</td>
+            <td><input type="text" name="senior_group" size="40px"  placeholder="10" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td width="300px" height="100px"  class="text">Количество свободных мест</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px"  class="text">ясли</td>
+            <td><input type="text" name="nursery" size="40px"  placeholder="50" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">младшая группа</td>
+            <td><input type="text" name="younger" size="40px" placeholder="50" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">средняя группа</td>
+            <td><input type="text" name="middle" size="40px" placeholder="50" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+
+        <tr>
+            <td style="text-align: right" width="300px" height="40px" class="text">старшая группа</td>
+            <td><input type="text" name="senior" size="40px" placeholder="50" pattern="^[ 0-9]+$" style="font-size: 18px" required></td>
+        </tr>
+    </table>
+    <div><input type="submit" class="button" style="font-weight: bold; margin-top:10px" value="Добавить"/></div>
+</form>
+<img  src = "https://i.ibb.co/85kZkkS/search.png"  style = "margin-left: 190px;  margin-top: 40px; width: 1050px; height: 300px">
+</body>
+</html>
