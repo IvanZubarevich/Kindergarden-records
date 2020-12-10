@@ -19,9 +19,6 @@ public class MenuService {
     @Autowired
     private AdminRepository adminRepository;
 
-    @Autowired
-    private InformationRepository informationRepository;
-
     public boolean addKindergarten(Kindergarten kindergarten, Information info)
     {
         Kindergarten kinder = kindergartenRepository.findByKinder(kindergarten.getKinder());

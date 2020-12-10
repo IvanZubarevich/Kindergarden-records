@@ -33,9 +33,6 @@ public class MenuController {
     private AdminRepository adminRepository;
 
     @Autowired
-    private InformationRepository informationRepository;
-
-    @Autowired
     private MenuService menuService;
 
     private Admin admin = new Admin();
@@ -143,7 +140,7 @@ public class MenuController {
     @PostMapping("/show")
     public String postShow(String search, String s, Model model)
     {
-        if(search==null && s.equals("all"))
+        if(s.equals("all"))
         {
             Iterable<Kindergarten> kinders = kindergartenRepository.findAll();
             ArrayList<Kindergarten> kindergartens = new ArrayList<>();
@@ -155,7 +152,7 @@ public class MenuController {
             model.addAttribute("kindergartens", kindergartens);
         }
         else {
-            if(search==null) model.addAttribute("fail_param", "Строка поиска пуста!");
+            if(search.equals(",")) model.addAttribute("fail_param", "Строка поиска пуста!");
             else {
                 int max_length = search.length();
                 String choice = search.substring(0, max_length - 1);

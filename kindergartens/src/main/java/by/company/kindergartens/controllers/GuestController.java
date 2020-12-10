@@ -34,7 +34,7 @@ public class GuestController {
     @PostMapping("/guest")
     public String postGuest(String search, String s, Model model)
     {
-        if(search.equals(",") && s.equals("all"))
+        if(s.equals("all"))
         {
             Iterable<Kindergarten> kinders = kindergartenRepository.findAll();
             ArrayList<Kindergarten> kindergartens = new ArrayList<>();

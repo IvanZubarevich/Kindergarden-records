@@ -5,6 +5,4 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface KindergartenRepository extends CrudRepository<Kindergarten, Long> {
     Kindergarten findByKinder(String kindergarten);
-    Kindergarten findByAddress(String address);
-    Kindergarten findByRegion(String region);
 }
